@@ -1,0 +1,60 @@
+name: Test on commit then PR
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: latest
+
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      - name: Install dependencies
+        working-directory: tg-photo-viewer 
+        run: npm install
+
+      - name: Run jest tests
+        working-directory: tg-photo-viewer
+        run: |
+          if [ -f "package.json" ] && [ -n "$(jq -r '.scripts.test' package.json)" ] && [ -n "$(find . -type f -name '*.test.*' -not -path "./node_modules/*")" ]; then
+            echo "Test files are available. Running npm test..."
+            npm test
+          else
+            echo "No test files found or no test script defined. Skipping test execution."
+          fi
+
+  create-pr:
+    name: Create PR
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Set up Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Action"
+      - name: Create Pull Request
+        run: |
+          SHA=$(git rev-parse HEAD)
+          gh pr create --base main --title $SHA --body "AutoPR"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
