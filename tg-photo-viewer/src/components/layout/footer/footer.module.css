@@ -1,0 +1,10 @@
+.footer {
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	margin: 15px auto;
+	font-weight: 500;
+}
+.span {
+	margin: 0 auto;
+}
