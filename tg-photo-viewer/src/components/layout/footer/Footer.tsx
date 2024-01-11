@@ -1,9 +1,19 @@
 import { FooterProps } from '../../../customTypes/types.ts';
 import styles from './footer.module.css';
 
-const Footer: React.FunctionComponent<FooterProps> = (footprops: FooterProps): React.JSX.Element => {
-	const { data } = footprops;
+const Footer: React.FunctionComponent = (): React.JSX.Element => {
+	const currentYear  = new Date().getFullYear();
+	const props: FooterProps = {
+		data: {
+			year: currentYear,
+			url: 'https://danielalmenar.com',
+			label: 'Dan Almenar Williams',
+			target: '_blank'
+		}
+	};
 
+	const { data } = props;
+	
 	return (
 		<footer className={styles.footer}>
 			<span className={styles.span}>
