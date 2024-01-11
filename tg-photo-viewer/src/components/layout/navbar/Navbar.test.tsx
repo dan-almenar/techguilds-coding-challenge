@@ -8,8 +8,8 @@ import Navbar from './Navbar.tsx';
 describe('Navbar component tests', () => {
 	const mockData: NavbarProps = {
 		data: [
-			{ id: '1', url: '/', label: 'home' },
-			{ id: '2', url: '/about', label: 'about' },
+			{ id: 'home', url: '/', label: 'home' },
+			{ id: 'about', url: '/about', label: 'info' },
 		],
 	};
 		
@@ -23,7 +23,7 @@ describe('Navbar component tests', () => {
 	it('About link renders properly', () => {
 		render(<Navbar data={mockData.data} />, {});
 
-		const aboutLink = screen.getByText(/about/i);
+		const aboutLink = screen.getByText(/info/i);
 		expect(aboutLink).toBeInTheDocument();
 	});
 });
