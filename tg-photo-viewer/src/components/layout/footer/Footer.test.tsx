@@ -7,7 +7,7 @@ describe('Footer component tests', () => {
 	const mockData: FooterProps = {
 		data: {
 			year: 2024,
-			url: 'https://github.com/dan-almenar',
+			url: 'https://danielalmenar.com',
 			label: 'Dan Almenar',
 			target: ''
 		}
