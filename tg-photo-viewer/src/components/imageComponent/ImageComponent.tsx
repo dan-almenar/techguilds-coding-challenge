@@ -32,3 +32,4 @@ const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): R
 	)
 };
 
+export default ImageComponent;
