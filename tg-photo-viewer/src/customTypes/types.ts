@@ -12,7 +12,6 @@ export interface ImageData {
 	blur_hash: string,
 	description: string,
 	alt_description: string,
-	location: { [key: string]: string },
 	urls: {
 		full: string,
 		regular: string,
