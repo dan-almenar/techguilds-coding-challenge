@@ -9,6 +9,7 @@ export interface ImageData {
 	id: string,
 	width: number,
 	height: number,
+	blur_hash: string,
 	description: string,
 	alt_description: string,
 	location: { [key: string]: string },
