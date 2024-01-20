@@ -10,7 +10,6 @@ const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): R
 		e.preventDefault();
 
 		// TODO implementation (open a dialog modal)
-		console.log(e);
 	}
 	return (
 		<figure id={props.id} className={styles.figure}
