@@ -1,4 +1,9 @@
 type Target = '' | '_blank';
+
+export interface HeaderProps {
+	title: string,
+	description: string
+}
 export interface NavbarProps {
 	data: { id: string, url: string, label: string }[];
 };
