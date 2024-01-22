@@ -7,10 +7,6 @@
   padding: 6rem;
   min-height: 100vh;
 }
-.heart {
-	font-size: 3rem !important;
-	color: firebrick;
-}
 
 @media (prefers-reduced-motion) {
 

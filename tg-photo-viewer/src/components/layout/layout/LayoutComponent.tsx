@@ -12,10 +12,6 @@ export default function LayoutComponent({
 	  <>
 		<Navbar />
     	<main className={styles.main}>
-			<h1>Hello, World!</h1>
-			&nbsp;
-			{ children }
-			<span className={`material-icons-outlined ${styles.heart}`}>favorite_border</span>
     	</main>
 		<Footer />
 	  </>
