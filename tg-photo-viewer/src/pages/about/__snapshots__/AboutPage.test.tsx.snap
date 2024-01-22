@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About page tests renders the About component 1`] = `
+<div>
+  <nav
+    class="nav"
+  >
+    <ul
+      class="ul"
+    >
+      <li
+        class="li"
+      >
+        <a
+          class="material-icons a"
+          href="/"
+        >
+          home
+        </a>
+      </li>
+      <li
+        class="li"
+      >
+        <a
+          class="material-icons a"
+          href="/about"
+        >
+          info
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main
+    class="main"
+  />
+  <footer
+    class="footer"
+  >
+    <span
+      class="span"
+    >
+      © 
+      <time
+        datetime="2024"
+      >
+        2024
+      </time>
+       
+      <a
+        href="https://danielalmenar.com"
+        target="_blank"
+      >
+        | 
+        Dan Almenar Williams
+      </a>
+    </span>
+  </footer>
+</div>
+`;
