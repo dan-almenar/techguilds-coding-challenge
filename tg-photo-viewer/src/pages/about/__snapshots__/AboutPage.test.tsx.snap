@@ -2,6 +2,10 @@
 
 exports[`About page tests renders the About component 1`] = `
 <div>
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
+    rel="stylesheet"
+  />
   <nav
     class="nav"
   >
@@ -32,7 +36,106 @@ exports[`About page tests renders the About component 1`] = `
   </nav>
   <main
     class="main"
-  />
+  >
+    <h1
+      class="h1"
+    >
+      Image Viewer
+    </h1>
+    <h1
+      class="h1"
+    >
+      About the App
+    </h1>
+    <section
+      class="section"
+    >
+      <h3
+        class="h3"
+      >
+        The Challenge:
+      </h3>
+      <p
+        class="p"
+      >
+        This App is an implementation of the  
+        <a
+          class="a"
+          href="https://github.com/TechGuilds/React-coding-challenge"
+          target="_blank"
+        >
+          TechGuild' s React Coding Challenge
+        </a>
+          made from scratch by  
+        <a
+          class="a"
+          href="https://github.com/dan-almenar"
+          target="_blank"
+        >
+          Dan Almenar Williams
+        </a>
+        .
+      </p>
+    </section>
+    <section
+      class="section"
+    >
+      <h3
+        class="h3"
+      >
+        The Solution:
+      </h3>
+      <p
+        class="p"
+      >
+        The App was created using  
+        <a
+          class="a"
+          href="https://nextjs.org/"
+          target="_blank"
+        >
+          NextJS
+        </a>
+          following a server side rendered approach. All components are rendered server side. This very about page is a NextJS static generated page.
+      </p>
+      <p
+        class="p"
+      >
+        All images had been fetched using the  
+        <a
+          class="a"
+          href="https://unsplash.com/"
+          target="_blank"
+        >
+          Unsplash API
+        </a>
+      </p>
+      <p
+        class="p"
+      >
+        Aditionally, I've added extra features not required in the challenge:
+      </p>
+      <ul
+        class="ul"
+      >
+        <li
+          class="li"
+        >
+          Search functionality
+        </li>
+        <li
+          class="li"
+        >
+          This About page
+        </li>
+        <li
+          class="li"
+        >
+          Unit and integration tests ran on code commits, for which I set up a CI/CD  pipeline with GitHub Actions.
+        </li>
+      </ul>
+    </section>
+  </main>
   <footer
     class="footer"
   >
