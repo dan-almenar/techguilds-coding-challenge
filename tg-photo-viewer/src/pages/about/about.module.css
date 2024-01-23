@@ -1,0 +1,41 @@
+.h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: darkred;
+	margin-bottom: 1.5rem;
+}
+.section {
+	margin: .8rem 0;
+}
+.h3 {
+	font-size: 1.5rem;
+	color: darkblue;
+	background-color: lightgray;
+	padding: .5rem;
+	margin-bottom: 1rem;
+}
+.p {
+	margin: .7rem 0;
+	font-size: 1.2rem;
+}
+.li {
+	font-size: 1.2rem;
+	margin-left: 2rem;
+}
+.a {
+	color: darkred;
+}
+.a:hover {
+	animation: enlargeText .6s forwards;
+}
+
+@keyframes enlargeText {
+	0% {
+		font-size: 1.2rem;
+	}
+	100% {
+		font-size: 1.4rem;
+	}
+}
+
+
