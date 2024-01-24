@@ -7,18 +7,20 @@ const SearchBar: React.FunctionComponent = (): React.JSX.Element => {
 
   const handleSearch: React.EventHandler<React.SyntheticEvent> = (e: React.SyntheticEvent): void => {
     console.log(searchTerm);
+	setSearchTerm('');
   };
 
   return (
-    <div className={styles.container}>
+    <div
+		className={styles.container}>
       <input
-		className={styles.searchbar}
+		className={styles.input}
         type="text"
         value={searchTerm}
 		placeholder="Search..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button 
+      <button
 		className={`material-icons ${styles.button}`}
 		onClick={handleSearch}
 	  >
