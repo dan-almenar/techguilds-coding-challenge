@@ -5,6 +5,7 @@ import HeaderProps from '../../customTypes/types.ts';
 
 const About: React.FunctionComponent = (): React.JSX.Element => {
 	// console header
+	console.clear();
 	console.log("%cAbout Page", "color: white; font-size: 30px; background-color: black; padding: 10px 50px;");
 	console.log("%cTechGuild's Challenge", "color: darkred; font-weight: bold; font-size: 18px; padding: 0 25px;");
 	console.log("%cBy Dan Almenar Williams", "color: black; font-weight: bold; font-size: 14px; padding: 0 25px;");
@@ -35,6 +36,15 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 							Dan Almenar Williams
 						</a>.
 					</p>
+					<p className={styles.p}>
+						You may find the source code for this project following
+						&nbsp;
+						<a className={styles.a}
+							href="https://github.com/dan-almenar/techGuilds-coding-challenge"
+							target="_blank">
+							this link
+						</a>.
+					</p>
 				</section>
 				<section className={styles.section}>
 					<h3 className={styles.h3}>
@@ -54,7 +64,7 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 						All images had been fetched using the
 						&nbsp;
 						<a className={styles.a} href="https://unsplash.com/" target="_blank">
-							Unsplash API
+							Unsplash API.
 						</a>
 					</p>
 					<p className={styles.p}>
@@ -72,6 +82,24 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 								A GitHub Actions based CI/CD pipeline that runs unit and integration tests on code commits.
 							</li>
 						</ul>
+				</section>
+				<section className={styles.section}>
+					<h3 className={styles.h3}>
+						About me:
+					</h3>
+					<p className={styles.p}>
+						I&apos;m a full stack developer from Argentina, currently based in Canada.
+					</p>
+					<p className={styles.p}>
+						Even though I&apos;ve been mostly devoted to web development, I&apos;ve also developed mobile apps,
+						small videogames, and command line tools. I&apos;ve also worked with data analysis and visualization, as well
+						as cloud computing and DevOps.
+					</p>
+					<p className={styles.p}>
+						Lately, aside of my regular interest in Data Structures and Algorithms, I&apos;ve been learning code 
+						optimization, and Compiler&apos;s theory. Performance analysis and improvement is a subject that I&apos;m 
+						really passionate about.
+					</p>
 				</section>
 			</LayoutComponent>
 		</>
