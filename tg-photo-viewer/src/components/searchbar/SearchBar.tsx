@@ -6,8 +6,11 @@ const SearchBar: React.FunctionComponent = (): React.JSX.Element => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleSearch: React.EventHandler<React.SyntheticEvent> = (e: React.SyntheticEvent): void => {
-    console.log(searchTerm);
+    // clear text input
+	e.preventDefault();
 	setSearchTerm('');
+	// redirect to search results
+	window.location.href = `/search/${searchTerm}`;
   };
 
   return (
