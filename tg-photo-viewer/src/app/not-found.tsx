@@ -12,8 +12,9 @@ const getRandomColor = (): string => {
 };
 
 const generateStars = (): JSX.Element[] => {
+	const numberOfStars = Math.floor(Math.random() * 200) + 1;
 	const stars: JSX.Element[] = [];
-	for (let i = 0; i < 50; i++) {
+	for (let i = 0; i < numberOfStars; i++) {
 		const size = Math.floor(Math.random() * 5) + 1;
 		stars.push(
 			<div
@@ -40,13 +41,31 @@ export default function NotFound(): JSX.Element {
 			<Head>
 				<title>Oops!</title>
 			</Head>
-			<body className={styles.body}
-				style={{
-					backgroundColor: 'black',
-				}}
+			<main className={styles.main}
 			>
+				<div 
+					style={{
+						border: '14px solid white',
+						position: 'absolute',
+						width: '50%',
+						height: '100%',
+						top: 0,
+					}}
+				></div>
+				<div className={styles.starfield}>
 				{ stars }
-			</body>
+				</div>
+				<div 
+					style={{
+						border: '14px solid white',
+						borderLeft: 'none',
+						position: 'absolute',
+						width: '50%',
+						height: '100%',
+						left: '50%',
+					}}
+				></div>
+			</main>
 		</>
 	);
 }
