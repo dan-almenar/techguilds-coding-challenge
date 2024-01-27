@@ -9,8 +9,9 @@
 .starfield {
 	position: absolute;
 	width: 100%;
-	height: 90%;
-	animation: stars 200s linear infinite;
+	height: 100%;
+	overflow: hidden;
+	animation: stars 400s linear infinite;
 }
 .star {
 	position: absolute;
@@ -24,9 +25,8 @@
 	overflow: hidden;
 }
 .p {
-	line-height: 3.8rem;
 	font-family: 'Orbitron', sans-serif;
-	font-size: 1.5rem;
+	font-size: 3.2rem;
 	color: #00FF00;
 	animation: scrollTextUpwards 16s linear infinite;
 	z-index: 4;

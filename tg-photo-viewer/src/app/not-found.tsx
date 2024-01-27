@@ -31,7 +31,7 @@ const generateStars = (): JSX.Element[] => {
 				style={{
 					backgroundColor: getRandomColor(),
 					top: Math.random() * 800 + '%',
-					left: Math.random() * 400 + '%',
+					left: Math.random() * 600 + '%',
 					width: `${size}px`,
 					height: `${size}px`,
 				}}
