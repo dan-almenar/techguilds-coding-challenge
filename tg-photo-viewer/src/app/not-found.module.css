@@ -6,33 +6,39 @@
 	height: 100vh;
 	width: 100vw;
 }
+.windshield {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	border: 14px solid snow;
+}
 .starfield {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	animation: stars 400s linear infinite;
 }
 .star {
 	position: absolute;
+	animation: stars 200s linear infinite;
 }
 .textContainer {
 	position: absolute;
 	top: 42%;
 	width: 100%;
 	text-align: center;
-	height: 4.5rem;
+	height: 2.2rem;
 	overflow: hidden;
 }
 .p {
 	font-family: 'Orbitron', sans-serif;
-	font-size: 3.2rem;
+	font-size: 2rem;
 	color: #00FF00;
 	animation: scrollTextUpwards 16s linear infinite;
 	z-index: 4;
 }
 .title {
-	font-size: 4.2rem;
 	font-weight: bold;
 }
 
@@ -53,7 +59,7 @@
 		transform: translate(0, 0);
 	}
 	100% {
-		transform: translate(-2000px, 80%);
+		transform: translate(-2000px, 180px);
 	}
 }
 

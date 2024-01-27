@@ -50,14 +50,7 @@ export default function NotFound(): JSX.Element {
 			</Head>
 			<main className={styles.main}
 			>
-				<div 
-					style={{
-						border: '14px solid white',
-						position: 'absolute',
-						width: '100%',
-						height: '100%',
-						top: 0,
-					}}
+				<div className={styles.windshield}
 				></div>
 				<div className={styles.starfield}>
 				{ stars }
