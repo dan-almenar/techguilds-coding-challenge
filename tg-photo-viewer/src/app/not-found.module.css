@@ -1,3 +1,6 @@
+/* Orbitron font family */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Press+Start+2P&display=swap');
+
 .main {
 	background-color: black;
 	height: 100vh;
@@ -6,6 +9,60 @@
 .starfield {
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 90%;
+	animation: stars 200s linear infinite;
+}
+.star {
+	position: absolute;
+}
+.textContainer {
+	position: absolute;
+	top: 42%;
+	width: 100%;
+	text-align: center;
+	height: 4.5rem;
+	overflow: hidden;
+}
+.p {
+	line-height: 3.8rem;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 1.5rem;
+	color: #00FF00;
+	animation: scrollTextUpwards 16s linear infinite;
+	z-index: 4;
+}
+.title {
+	font-size: 4.2rem;
+	font-weight: bold;
+}
+
+.a {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 1.5rem;
+	color: #00FF00;
+	text-decoration: none;
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* Animations */
+@keyframes stars {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-2000px, 80%);
+	}
+}
+
+@keyframes scrollTextUpwards {
+	0% {
+		transform: translateY(120%);
+	}
+	100% {
+		transform: translateY(-300%);
+	}
 }
 

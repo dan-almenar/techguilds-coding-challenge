@@ -3,16 +3,24 @@ import styles from "./not-found.module.css";
 
 const getRandomColor = (): string => {
 	const colors: string[] = [
-		'firebrick',
-		'yellow',
 		'white',
+		'yellow',
+		'firebrick',
 	];
 
-	return colors[Math.floor(Math.random() * colors.length)];
+	const pickColor = (): number => {
+		const base: number = Math.floor(Math.random() * 100);
+
+		if (base < 80) return 0;
+		if (base < 95) return 1;
+		return 2;
+	}
+
+	return colors[pickColor()];
 };
 
 const generateStars = (): JSX.Element[] => {
-	const numberOfStars = Math.floor(Math.random() * 200) + 1;
+	const numberOfStars = 10000;
 	const stars: JSX.Element[] = [];
 	for (let i = 0; i < numberOfStars; i++) {
 		const size = Math.floor(Math.random() * 5) + 1;
@@ -21,10 +29,9 @@ const generateStars = (): JSX.Element[] => {
 				key={i}
 				className={styles.star}
 				style={{
-					position: 'absolute',
 					backgroundColor: getRandomColor(),
-					top: Math.random() * 100 + '%',
-					left: Math.random() * 100 + '%',
+					top: Math.random() * 800 + '%',
+					left: Math.random() * 400 + '%',
 					width: `${size}px`,
 					height: `${size}px`,
 				}}
@@ -47,7 +54,7 @@ export default function NotFound(): JSX.Element {
 					style={{
 						border: '14px solid white',
 						position: 'absolute',
-						width: '50%',
+						width: '100%',
 						height: '100%',
 						top: 0,
 					}}
@@ -55,17 +62,18 @@ export default function NotFound(): JSX.Element {
 				<div className={styles.starfield}>
 				{ stars }
 				</div>
-				<div 
-					style={{
-						border: '14px solid white',
-						borderLeft: 'none',
-						position: 'absolute',
-						width: '50%',
-						height: '100%',
-						left: '50%',
-					}}
-				></div>
+				<div className={styles.textContainer}>
+					<p className={`${styles.p} ${styles.title}`}>Error : 404</p>
+					<p className={styles.p}>PAGE NOT FOUND</p>
+					<p className={styles.p}>Maybe the page got lost in the vastness of space...</p>
+				</div>
+				<a className={styles.a} href="/">
+					Go Home
+					&nbsp;
+					<span className="material-icons">rocket_launch</span>
+				</a>
 			</main>
 		</>
 	);
-}
+};
+
