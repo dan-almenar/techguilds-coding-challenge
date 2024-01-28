@@ -1,3 +1,6 @@
 # node modules
 tg-photo-viewer/node_modules
 tg-photo-viewer/node_modules/*.*
+
+# tests snapshots
+*/*/__snapshots__
