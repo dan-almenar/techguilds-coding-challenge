@@ -4,12 +4,6 @@ import Headers from '../../components/layout/headers/Headers';
 import HeaderProps from '../../customTypes/types.ts';
 
 const About: React.FunctionComponent = (): React.JSX.Element => {
-	// console header
-	console.clear();
-	console.log("%cAbout Page", "color: white; font-size: 30px; background-color: black; padding: 10px 50px;");
-	console.log("%cTechGuild's Challenge", "color: darkred; font-weight: bold; font-size: 18px; padding: 0 25px;");
-	console.log("%cBy Dan Almenar Williams", "color: black; font-weight: bold; font-size: 14px; padding: 0 25px;");
-
 	const headProps: HeaderProps = {
 		title: 'About',
 		description: 'About the app',
