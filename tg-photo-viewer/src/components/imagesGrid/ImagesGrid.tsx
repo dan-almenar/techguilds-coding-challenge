@@ -13,3 +13,5 @@ const ImageGrid: React.FunctionComponent<ImageData[]> = (props: ImageData[]): Re
 		</div>
 	)
 };
+
+export default ImageGrid;
