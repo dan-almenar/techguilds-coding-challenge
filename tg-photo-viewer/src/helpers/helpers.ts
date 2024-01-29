@@ -1,5 +1,14 @@
 import { RequestOptions, ImageData } from "../customTypes/types";
 
+const BASE_ENDPOINT: string = `${process.env.BASE_ENDPOINT}`;
+const defaultOptions: RequestOptions = {
+	headers: {
+		'Accept-Version': 'v1',
+		'Authorization': `Client-ID ${process.env.API_KEY}`,
+		'Content-Type': 'application/json',
+	},
+};
+
 const toImageData: Function = (item: any): ImageData => {
 	return {
 		id: item['id'],
@@ -26,28 +35,21 @@ const toImageData: Function = (item: any): ImageData => {
 		},
 	};
 };
-
-const fetchData: Function = async<T>(endpoint: string, options?: RequestOptions, callback?: Function): Promise<T | T[]> => {
+async function fetchImages(endpoint: string = BASE_ENDPOINT, options: RequestOptions = defaultOptions): Promise<ImageData[]> {
 	try {
-		const response: Response = await fetch(endpoint, options ? options : {});
-		if (response.ok) {
-			const data: T | T[] = await response.json();
-			if (callback) {
-				if (Array.isArray(data)){
-					return data.map((item) => callback(item));
-				} else {
-					return callback(data);
-				}
-			} else {
-				return data;
-			};
+		const response: Response = await fetch(endpoint, options);
+		if (response.ok){
+			const data: ImageData[] = await response.json();
+			data.map((item: any) => toImageData(item));
+			return data;
 		} else {
-			const err: Error = new Error(`Error ${response.status}: ${response.statusText}`);
+			const err: Error = new Error(`Error: ${response.status} - ${response.statusText}`);
 			return Promise.reject(err);
 		}
-	} catch (err) {
+	} catch(err) {
 		return Promise.reject(err);
-	};
+	}
 };
 
-export { toImageData, fetchData };
+export { fetchImages };
+
