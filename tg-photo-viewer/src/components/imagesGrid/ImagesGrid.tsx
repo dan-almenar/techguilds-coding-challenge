@@ -1,8 +1,10 @@
 import { ImageData } from '../../customTypes/types.ts';
 import styles from './imgGrid.module.css';
 import ImageComponent from '../imageComponent/ImageComponent.tsx';
+import { fetchImages } from '../../helpers/helpers.ts';
 
-const ImageGrid: React.FunctionComponent<ImageData[]> = (props: ImageData[]): React.JSX.Element => {
+const ImageGrid: React.FunctionComponent<ImageData[]> = async (): React.JSX.Element => {
+	const props: ImageData[] = await fetchImages();
 	return (
 		<div id="img-grid" className={styles.imgGrid}>
 		{
@@ -15,3 +17,4 @@ const ImageGrid: React.FunctionComponent<ImageData[]> = (props: ImageData[]): Re
 };
 
 export default ImageGrid;
+
