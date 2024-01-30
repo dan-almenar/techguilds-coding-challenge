@@ -3,12 +3,17 @@ import styles from './imgGrid.module.css';
 import ImageComponent from '../imageComponent/ImageComponent.tsx';
 import { fetchImages } from '../../helpers/helpers.ts';
 
-const ImageGrid: React.FunctionComponent<ImageData[]> = async (): React.JSX.Element => {
-	const props: ImageData[] = await fetchImages();
+async function fetchData(): Promise<ImageData[]> {
+	const data: ImageData[] = await fetchImages();
+	return data;
+}
+
+const ImageGrid: React.FunctionComponent = async (): Promise<React.JSX.Element> => {
+	const data: ImageData[] = await fetchData();
 	return (
-		<div id="img-grid" className={styles.imgGrid}>
+		<div id="img-grid" className={styles.imggrid}>
 		{
-			props.map((imgData: ImageData) => (
+			data.map((imgData: ImageData) => (
 				<ImageComponent key={imgData.id} {...imgData} />
 			))
 		}
