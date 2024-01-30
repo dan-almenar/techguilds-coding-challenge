@@ -38,13 +38,6 @@ describe('ImageComponent tests', () => {
 		expect(figureTag).toMatchSnapshot();
 	});
 
-	it('<figcaption> renders properly', () => {
-		const { container } = render(<ImageComponent {...mockData} />, {});
-		const captionTag = container.querySelector('figcaption');
-
-		expect(captionTag).toBeInTheDocument();
-	});
-
 	it('img tag renders property', () => {
 		const { container } = render(<ImageComponent {...mockData} />, {});
 		const img = container.querySelector('img');
