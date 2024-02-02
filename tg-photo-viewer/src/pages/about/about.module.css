@@ -1,16 +1,20 @@
+.content {
+	font-family: var(--font-alternative);
+}
 .h1 {
 	font-size: 2.5rem;
 	font-weight: 700;
-	color: darkred;
+	color: var(--thirdary-color);
 	margin-bottom: 1.5rem;
+	text-align: center;
 }
 .section {
 	margin: .8rem 0;
 }
 .h3 {
 	font-size: 1.5rem;
-	color: darkblue;
-	background-color: lightgray;
+	color: var(--primary-color);
+	background-color: black;
 	padding: .5rem;
 	margin-bottom: 1rem;
 }
@@ -23,7 +27,8 @@
 	margin-left: 2rem;
 }
 .a {
-	color: darkred;
+	color: var(--thirdary-color);
+	font-weight: bold;
 }
 .a:hover {
 	animation: enlargeText .6s forwards;
