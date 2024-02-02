@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Orbitron&family=Press+Start+2P&display=swap');
 .nav {
-	width: 80%;
-	padding: 5px;
-	margin: 15px auto !important;
+	padding: 10px 10%;
+	display: flex;
+	justify-content: space-between;
+	background: black;
+	color: #bdb530;
+	align-items: center;
+	font-size: 1.5rem;
 }
 .ul {
 	display: flex;
@@ -15,7 +20,20 @@
 	margin-right: 10px;
 }
 .a {
-	font-size: 1.5rem !important;
-	color: #000;
 	text-decoration: none;
+	font-size: 1.5rem !important;
+}
+.logoContainer {
+	display: flex;
+	align-items: center;
+	height: 35px;
+}
+.logo {
+	height: 40px;
+	width: auto;
+	margin-left: 10px;
+}
+.appname {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-weight: bold;
 }

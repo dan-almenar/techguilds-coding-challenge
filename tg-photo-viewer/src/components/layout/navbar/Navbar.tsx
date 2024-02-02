@@ -21,6 +21,11 @@ const Navbar: React.FunctionComponent = (): React.JSX.Element => {
 		
 	return (
 		<nav className={styles.nav}>
+			<div className={styles.logoContainer}>
+				<span className={styles.appname}>ChipiKat!</span>
+				<img className={styles.logo} src="/ChipiKat.png" alt="ChipiKat Logo"/>
+			</div>
+			<span className={styles.appname}>Image Viewer</span>
 			<ul className={styles.ul}>
 				{ data.map((item) => (
 					<li className={styles.li} key={item.id}>

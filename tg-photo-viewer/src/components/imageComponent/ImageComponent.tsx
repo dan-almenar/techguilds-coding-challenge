@@ -39,7 +39,7 @@ const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): R
 				placeholder='blur'
 				blurDataURL={blurDataURL}
 				width={250}
-				height={props.height * 250 / props.width}
+				height={`${Math.floor(props.height * 250 / props.width)}`}
 			/>
 		</figure>
 	)
