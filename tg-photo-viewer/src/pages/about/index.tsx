@@ -12,6 +12,7 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 		<>
 			<Headers {...headProps} />
 			<LayoutComponent>
+				<div className={styles.content}>
 				<h1 className={styles.h1}>About the App</h1>
 				<section className={styles.section}>
 					<h3 className={styles.h3}>
@@ -32,10 +33,10 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 					</p>
 					<p className={styles.p}>
 						You may find the source code for this project following
-						&nbsp;
 						<a className={styles.a}
 							href="https://github.com/dan-almenar/techGuilds-coding-challenge"
 							target="_blank">
+							&nbsp;
 							this link
 						</a>.
 					</p>
@@ -51,7 +52,7 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 							NextJS
 						</a>
 						&nbsp;
-						following a server side first render approach. All components are rendered server side. This very about
+						following a server side first render approach. Almost all components are rendered server side. This very about
 						page is a NextJS static generated page.
 					</p>
 					<p className={styles.p}>
@@ -95,6 +96,7 @@ const About: React.FunctionComponent = (): React.JSX.Element => {
 						really passionate about.
 					</p>
 				</section>
+				</div>
 			</LayoutComponent>
 		</>
 	);
