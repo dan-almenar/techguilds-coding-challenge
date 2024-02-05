@@ -38,6 +38,14 @@ describe('SearchBar tests', () => {
 	  // Verify redirection
 	  expect(window.location.href).toBe('/search/testSearch');
 	});
+	it("Enter key redirects to /search/[search term]", () => {
+		render(<SearchBar />);
+		const inputElement = screen.getByPlaceholderText('Search...');
+		fireEvent.change(inputElement, { target: { value: 'testSearch' } });
+		fireEvent.keyDown(inputElement, { key: "Enter" });
+		// Verify redirection
+		expect(window.location.href).toBe('/search/testSearch');
+	});
 })
 
 
