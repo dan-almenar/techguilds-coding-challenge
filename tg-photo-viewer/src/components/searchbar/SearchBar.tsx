@@ -6,12 +6,15 @@ const SearchBar: React.FunctionComponent = (): React.JSX.Element => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleSearch: React.EventHandler<React.SyntheticEvent> = (e: React.SyntheticEvent): void => {
-    // clear text input
 	e.preventDefault();
-	setSearchTerm('');
+
 	// redirect to search results
 	window.location.href = `/search/${searchTerm}`;
   };
+
+  const handleInput: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {
+	if (e.key === 'Enter') handleSearch(e);
+  }
 
   return (
     <div
@@ -21,7 +24,11 @@ const SearchBar: React.FunctionComponent = (): React.JSX.Element => {
         type="text"
         value={searchTerm}
 		placeholder="Search..."
+		autoComplete="on"
+		autoFocus
+		maxLength={40}
         onChange={(e) => setSearchTerm(e.target.value)}
+		onKeyDown={handleInput}
       />
       <button
 		className={`material-icons ${styles.button}`}
