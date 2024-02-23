@@ -4,19 +4,17 @@ import ImageComponent from '../imageComponent/ImageComponent.tsx';
 import { fetchImages } from '../../actions/actions.ts';
 
 async function fetchData(): Promise<ImageData[]> {
-	// test performed as expected
-	// TODO: change back (remove params)
 	const params: Record<string, string | number> = {
-		per_page: 4,
-		count: 3,
+		page: 1,
+		per_page: 12, // per_page param used when no query is provided
+		count: 12, // count param used when query is provided
 	}
-	const data: ImageData[] = await fetchImages(undefined, undefined, params, 'cats');
+	const data: ImageData[] = await fetchImages(undefined, params);
 	return data;
 }
 
-const ImageGrid: React.FunctionComponent = async (): Promise<React.JSX.Element> => {
-	const data: ImageData[] = await fetchData();
-	console.log(data.length);
+const ImageGrid: React.FunctionComponent<ImageData[]> = (props: object): React.JSX.Element => {
+	const { data } = props;
 	return (
 		<div id="img-grid" className={styles.imggrid}>
 		{
