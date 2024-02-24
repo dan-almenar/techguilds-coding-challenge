@@ -12,12 +12,14 @@ const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): R
 
 	const handleClick = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
+		console.log('clicked', props.id);
 
 		// TODO implementation (open a dialog modal)
 	}
 	const handleHover = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
 		setIsHovered(!isHovered);
+		console.log(description);
 	}
 
 	return (
