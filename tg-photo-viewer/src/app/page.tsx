@@ -10,7 +10,7 @@ async function fetchData(): Promise<ImageData[]> {
 		per_page: 12, // per_page param used when no query is provided
 		count: 12, // count param used when query is provided
 	}
-	const data: ImageData[] = await fetchImages(undefined, params);
+	const data: ImageData[] = await fetchImages(params);
 	return data;
 }
 
@@ -19,7 +19,7 @@ export default async function Home(){
 	return (
 		< LayoutComponent>
 			<SearchBar />
-			<ImagesGrid data={data} /> */}
+			<ImagesGrid data={data} /> 
 		</LayoutComponent>
 	)
 };

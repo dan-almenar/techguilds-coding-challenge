@@ -7,8 +7,9 @@ import styles from './imgComponent.module.css';
 const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): React.JSX.Element => {
 	// required with "placeholder='blur'"
 	const blurDataURL: string = `data:image/jpeg;base64,${props.blur_hash}`;
+
 	const [isHovered, setIsHovered] = useState<boolean>(false);
-	const description: string = props.description?.length > 40 ? props.description.substring(0, 40) + '...' : props.description;
+	const description: string = props.description?.length > 40 ? props.description.substring(0, 40).concat('...') : props.description;
 
 	const handleClick = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
