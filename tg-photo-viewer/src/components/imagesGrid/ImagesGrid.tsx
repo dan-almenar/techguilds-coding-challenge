@@ -1,12 +1,13 @@
 'use client';
+import { useState, useEffect, cache } from 'react';
 import { ImageData } from '../../customTypes/types.ts';
 import styles from './imgGrid.module.css';
 import ImageComponent from '../imageComponent/ImageComponent.tsx';
-
+import { fetchImages } from '../../actions/actions.ts';
 
 // TODO ADD INFINITY SCROLLING
 
-const ImageGrid: React.FunctionComponent<ImageData[]> = ({ data }: { data: ImageData[] }): React.JSX.Element => {
+const ImageGrid: React.FunctionComponent<ImageData[]> = ( { data } ): React.JSX.Element => {
 	return (
 		<div id="img-grid" className={styles.imggrid}>
 		{
