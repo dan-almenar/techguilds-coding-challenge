@@ -13,8 +13,8 @@ const defaultOptions: RequestOptions = {
 };
 
 const baseParams: Record<string, string | number> = {
-	'per_page': 12,
-	'count': 12,
+	'per_page': 12, // per_page param required when no query is provided
+	'count': 16, // count param required when a query is provided
 }
 
 const parseURI: Function = (
@@ -76,5 +76,10 @@ const fetchImages: Function = cache(async(
 	}
 });
 
-export { fetchImages };
+const fetchData: Function = async(params: Record<string, string | number> = baseParams): Promise<ImageData[]> => {
+	const data: ImageData[] = await fetchImages(params);
+	return data;
+};
+
+export { fetchImages, fetchData };
 
