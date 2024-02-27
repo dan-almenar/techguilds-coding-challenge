@@ -1,13 +1,27 @@
 'use client';
-import { useState, useEffect, cache } from 'react';
+import { useState, useEffect } from 'react';
 import { ImageData } from '../../customTypes/types.ts';
 import styles from './imgGrid.module.css';
 import ImageComponent from '../imageComponent/ImageComponent.tsx';
-import { fetchImages } from '../../actions/actions.ts';
+import { toImageData } from '../../modules/helpers.ts';
 
 // TODO ADD INFINITY SCROLLING
 
 const ImageGrid: React.FunctionComponent<ImageData[]> = ( { data } ): React.JSX.Element => {
+	
+	// FETCH IMPLEMENTATION WORKS AS INTENDED
+	const url: URL = new URL('/api/photos', window.location.origin);
+	url.searchParams.append('query', 'cats');
+	const moreImagesData = fetch(url.href);
+	moreImagesData.then((data) => {
+		const imgArr = data.json();
+		imgArr.then((data) => {
+			data.map((item: any) => {
+				const imgData = toImageData(item);
+				console.log(imgData.id, imgData.urls.regular);
+			})
+		})
+	})
 	return (
 		<div id="img-grid" className={styles.imggrid}>
 		{

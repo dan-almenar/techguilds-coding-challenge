@@ -1,7 +1,7 @@
 import LayoutComponent from '../components/layout/layout/LayoutComponent.tsx';
 import SearchBar from '../components/searchbar/SearchBar.tsx';
 import ImagesGrid from '../components/imagesGrid/ImagesGrid.tsx';
-import { fetchData } from '../actions/actions.ts';
+import { fetchData } from '../modules/actions.ts';
 import type { ImageData } from '../customTypes/types.ts';
 
 export default async function Home() {

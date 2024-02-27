@@ -1,12 +1,13 @@
-import 'server-only'
+import "server-only";
 import { RequestOptions, ImageData } from "../customTypes/types";
+import { toImageData } from "./helpers";
 
 const UNSPLASH_ENDPOINT_BASE: string = 'https://api.unsplash.com/photos/';
 const UNSPLASH_ENDPOINT_RANDOM: string = 'https://api.unsplash.com/photos/random';
 const defaultOptions: RequestOptions = {
 	headers: {
 		'Accept-Version': 'v1',
-		'Authorization': `Client-ID ${process.env.API_KEY}`,
+		'Authorization': `Client-ID ${process.env.UNSPLASH_API_KEY}`,
 		'Content-Type': 'application/json',
 	},
 };
@@ -28,33 +29,6 @@ const parseURI: Function = (
 	return endpoint.href;
 }
 
-const toImageData: Function = (item: any): ImageData => {
-	return {
-		id: item['id'],
-		width: item['width'],
-		height: item['height'],
-		blur_hash: item['blur_hash'],
-		description: item['description'] ?? '',
-		alt_description: item['alt_description'] ?? '',
-		urls: {
-			full: item['urls']['full'],
-			regular: item['urls']['regular'],
-			small: item['urls']['small'],
-		},
-		links: {
-			html: item['links']['html'],
-			download: item['links']['download'],
-		},
-		likes: item['likes'],
-		user: {
-			id: item['user']['id'],
-			username: item['user']['username'],
-			name: item['user']['name'],
-			portfolio_url: item['user']['portfolio_url'],
-		},
-	};
-};
-
 const fetchImages: Function = (async(
 	params: Record<string, string | number> = baseParams,
 	options: RequestOptions = defaultOptions,
@@ -75,10 +49,12 @@ const fetchImages: Function = (async(
 	}
 });
 
-const fetchData: Function = async(params: Record<string, string | number> = baseParams): Promise<ImageData[]> => {
+const fetchData: Function = async(
+	params: Record<string, string | number> = baseParams
+): Promise<ImageData[]> => {
 	const data: ImageData[] = await fetchImages(params);
 	return data;
 };
 
-export { fetchImages, fetchData };
+export { fetchData, toImageData };
 
