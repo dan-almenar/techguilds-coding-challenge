@@ -7,3 +7,8 @@
 	padding: 10px;
 	margin-top: 5%;
 }
+.imggrid:hover > .imgcontainer:not(:hover) {
+	filter: blur(3px) grayscale(100%);
+}
+
+

@@ -1,19 +1,20 @@
-"use server"
+import "server-only";
 import { RequestOptions, ImageData } from "../customTypes/types";
+import { toImageData } from "./helpers";
 
 const UNSPLASH_ENDPOINT_BASE: string = 'https://api.unsplash.com/photos/';
 const UNSPLASH_ENDPOINT_RANDOM: string = 'https://api.unsplash.com/photos/random';
 const defaultOptions: RequestOptions = {
 	headers: {
 		'Accept-Version': 'v1',
-		'Authorization': `Client-ID ${process.env.API_KEY}`,
+		'Authorization': `Client-ID ${process.env.UNSPLASH_API_KEY}`,
 		'Content-Type': 'application/json',
 	},
 };
 
 const baseParams: Record<string, string | number> = {
-	'per_page': 12,
-	'count': 12,
+	'per_page': 12, // per_page param required when no query is provided
+	'count': 16, // count param required when a query is provided
 }
 
 const parseURI: Function = (
@@ -28,37 +29,10 @@ const parseURI: Function = (
 	return endpoint.href;
 }
 
-const toImageData: Function = (item: any): ImageData => {
-	return {
-		id: item['id'],
-		width: item['width'],
-		height: item['height'],
-		blur_hash: item['blur_hash'],
-		description: item['description'] ?? '',
-		alt_description: item['alt_description'] ?? '',
-		urls: {
-			full: item['urls']['full'],
-			regular: item['urls']['regular'],
-			small: item['urls']['small'],
-		},
-		links: {
-			html: item['links']['html'],
-			download: item['links']['download'],
-		},
-		likes: item['likes'],
-		user: {
-			id: item['user']['id'],
-			username: item['user']['username'],
-			name: item['user']['name'],
-			portfolio_url: item['user']['portfolio_url'],
-		},
-	};
-};
-
-async function fetchImages(
-	options: RequestOptions = defaultOptions,
+const fetchImages: Function = (async(
 	params: Record<string, string | number> = baseParams,
-): Promise<ImageData[]> {
+	options: RequestOptions = defaultOptions,
+): Promise<ImageData[]>  => {
 	try {
 		let uri: string = parseURI(params);
 
@@ -73,7 +47,14 @@ async function fetchImages(
 	} catch(err) {
 		return Promise.reject(err);
 	}
+});
+
+const fetchData: Function = async(
+	params: Record<string, string | number> = baseParams
+): Promise<ImageData[]> => {
+	const data: ImageData[] = await fetchImages(params);
+	return data;
 };
 
-export { fetchImages };
+export { fetchData, toImageData };
 

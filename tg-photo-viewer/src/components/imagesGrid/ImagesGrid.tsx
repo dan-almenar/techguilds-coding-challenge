@@ -1,25 +1,36 @@
+'use client';
+import { useState, useEffect } from 'react';
 import { ImageData } from '../../customTypes/types.ts';
 import styles from './imgGrid.module.css';
 import ImageComponent from '../imageComponent/ImageComponent.tsx';
-import { fetchImages } from '../../actions/actions.ts';
+import { toImageData } from '../../modules/helpers.ts';
 
-async function fetchData(): Promise<ImageData[]> {
-	const params: Record<string, string | number> = {
-		page: 1,
-		per_page: 12, // per_page param used when no query is provided
-		count: 12, // count param used when query is provided
-	}
-	const data: ImageData[] = await fetchImages(undefined, params);
-	return data;
-}
+// TODO ADD INFINITY SCROLLING
 
-const ImageGrid: React.FunctionComponent<ImageData[]> = (props: object): React.JSX.Element => {
-	const { data } = props;
+const ImageGrid: React.FunctionComponent<ImageData[]> = ( { data } ): React.JSX.Element => {
+	
+	// FETCH IMPLEMENTATION WORKS AS INTENDED
+	const url: URL = new URL('/api/photos', window.location.origin);
+	url.searchParams.append('query', 'cats');
+	const moreImagesData = fetch(url.href);
+	moreImagesData.then((data) => {
+		const imgArr = data.json();
+		imgArr.then((data) => {
+			data.map((item: any) => {
+				const imgData = toImageData(item);
+				console.log(imgData.id, imgData.urls.regular);
+			})
+		})
+	})
 	return (
 		<div id="img-grid" className={styles.imggrid}>
 		{
 			data.map((imgData: ImageData) => (
-				<ImageComponent key={imgData.id} {...imgData} />
+				<div key={imgData.id} className={styles.imgcontainer}
+					onClick={(e) => { e.preventDefault(); console.log('clicked', imgData.id); }}
+				>
+				<ImageComponent {...imgData} />
+				</div>
 			))
 		}
 		</div>

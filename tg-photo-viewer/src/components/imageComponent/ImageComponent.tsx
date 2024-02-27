@@ -1,36 +1,44 @@
-"use client";
+// TODO THROUGH TEST THIS AS A SERVER COMPONENT 
+//"use client";
 import Image from 'next/image';
-import { useState } from 'react';
+//import { useState } from 'react';
 import { ImageData } from '../../customTypes/types.ts';
 import styles from './imgComponent.module.css';
 
 const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): React.JSX.Element => {
 	// required with "placeholder='blur'"
 	const blurDataURL: string = `data:image/jpeg;base64,${props.blur_hash}`;
-	const [isHovered, setIsHovered] = useState<boolean>(false);
-	const description: string = props.description?.length > 40 ? props.description.substring(0, 40) + '...' : props.description;
+
+	//const [isHovered, setIsHovered] = useState<boolean>(false);
+	const description: string = props.description?.length > 40 ? props.description.substring(0, 40).concat('...') : props.description ? props.description : props.alt_description;
 
 	const handleClick = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
+		console.log('clicked', props.id);
 
 		// TODO implementation (open a dialog modal)
 	}
+	/*
 	const handleHover = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
 		setIsHovered(!isHovered);
+		console.log(description);
 	}
+	 */
 
 	return (
 		<figure id={props.id} className={styles.figure}
-			onClick={handleClick}
-			onMouseEnter={handleHover}
-			onMouseLeave={handleHover}
 		>
+			<figcaption className={styles.figcaption}>
+				{description}
+			</figcaption>
+			{/*
 			{isHovered && props.description && (
 			<figcaption className={styles.figcaption}>
 				{description}
 			</figcaption>	
 			)}
+			*/}
 
 			<Image
 				className={styles.img}
