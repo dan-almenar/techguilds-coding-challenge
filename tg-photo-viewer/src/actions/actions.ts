@@ -1,5 +1,4 @@
 import 'server-only'
-import { cache } from "react";
 import { RequestOptions, ImageData } from "../customTypes/types";
 
 const UNSPLASH_ENDPOINT_BASE: string = 'https://api.unsplash.com/photos/';
@@ -56,7 +55,7 @@ const toImageData: Function = (item: any): ImageData => {
 	};
 };
 
-const fetchImages: Function = cache(async(
+const fetchImages: Function = (async(
 	params: Record<string, string | number> = baseParams,
 	options: RequestOptions = defaultOptions,
 ): Promise<ImageData[]>  => {
