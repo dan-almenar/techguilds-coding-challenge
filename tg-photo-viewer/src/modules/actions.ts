@@ -1,26 +1,20 @@
+/*
+ * The actions.ts module exports the fetchData function.
+ * Said function is currently used to fetch images from Unsplash and map them to ImageData objects,
+ * but their implementation can be extended to adapt to any other API.
+*/
 import "server-only";
 import { RequestOptions, ImageData } from "../customTypes/types";
 import { toImageData } from "./helpers";
+import { services } from "./constants";
 
-const UNSPLASH_ENDPOINT_BASE: string = 'https://api.unsplash.com/photos/';
-const UNSPLASH_ENDPOINT_RANDOM: string = 'https://api.unsplash.com/photos/random';
-const defaultOptions: RequestOptions = {
-	headers: {
-		'Accept-Version': 'v1',
-		'Authorization': `Client-ID ${process.env.UNSPLASH_API_KEY}`,
-		'Content-Type': 'application/json',
-	},
-};
 
-const baseParams: Record<string, string | number> = {
-	'per_page': 12, // per_page param required when no query is provided
-	'count': 16, // count param required when a query is provided
-}
+const { unsplash } = services;
 
 const parseURI: Function = (
 	params: Record<string, string | number> = baseParams
 ): string => {
-	const endpoint: URL = params.query ? new URL(UNSPLASH_ENDPOINT_RANDOM) : new URL(UNSPLASH_ENDPOINT_BASE);
+	const endpoint: URL = params.query ? new URL(unsplash.endpoints.random) : new URL(unsplash.endpoints.base);
 
 	for (const [key, value] of Object.entries(params)) {
 		endpoint.searchParams.append(key, value.toString());
@@ -30,8 +24,8 @@ const parseURI: Function = (
 }
 
 const fetchImages: Function = (async(
-	params: Record<string, string | number> = baseParams,
-	options: RequestOptions = defaultOptions,
+	params: Record<string, string | number> = unsplash.base_params,
+	options: RequestOptions = unsplash.base_options,
 ): Promise<ImageData[]>  => {
 	try {
 		let uri: string = parseURI(params);
@@ -50,11 +44,11 @@ const fetchImages: Function = (async(
 });
 
 const fetchData: Function = async(
-	params: Record<string, string | number> = baseParams
+	params: Record<string, string | number> = unsplash.base_params
 ): Promise<ImageData[]> => {
 	const data: ImageData[] = await fetchImages(params);
 	return data;
 };
 
-export { fetchData, toImageData };
+export { fetchData };
 
