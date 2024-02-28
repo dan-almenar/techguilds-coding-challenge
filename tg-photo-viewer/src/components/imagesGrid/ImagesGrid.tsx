@@ -10,7 +10,7 @@ import { toImageData } from '../../modules/helpers.ts';
 const ImageGrid: React.FunctionComponent<ImageData[]> = ( { data } ): React.JSX.Element => {
 	
 	// FETCH IMPLEMENTATION WORKS AS INTENDED
-	const url: URL = new URL('/api/photos', window.location.origin);
+	const url: URL = new URL('/api/photos', location.origin);
 	url.searchParams.append('query', 'cats');
 	const moreImagesData = fetch(url.href);
 	moreImagesData.then((data) => {

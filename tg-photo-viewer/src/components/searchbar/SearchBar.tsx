@@ -9,7 +9,7 @@ const SearchBar: React.FunctionComponent = (): React.JSX.Element => {
 	e.preventDefault();
 
 	// redirect to search results
-	window.location.href = `/search/${searchTerm}`;
+	location.href = `/search/${searchTerm}`;
   };
 
   const handleInput: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {
