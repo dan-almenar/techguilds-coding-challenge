@@ -3,10 +3,13 @@
 	width: 100%;
 	height: auto;
 	border-radius: 12px;
+	margin: 10px 0;
 }
 .figcaption {
 	display: none;
 	position: absolute;
+	width: 90%;
+	overflow-wrap: break-word;
 	bottom: 5px;
 	color: white;
 	padding: 10px;
@@ -17,6 +20,11 @@
 .figure:hover > .figcaption {
 	display: block;
 	animation: fadeIn 0.5s ease-in-out;
+}
+.credits {
+	background-color: black;
+	font-weight: bold;
+	color: var(--primary-color);
 }
 .img {
 	width: auto;

@@ -9,8 +9,7 @@ const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): R
 	// required with "placeholder='blur'"
 	const blurDataURL: string = `data:image/jpeg;base64,${props.blur_hash}`;
 
-	//const [isHovered, setIsHovered] = useState<boolean>(false);
-	const description: string = props.description?.length > 40 ? props.description.substring(0, 40).concat('...') : props.description ? props.description : props.alt_description;
+	const description: string = props.description?.length > 40 ? props.description.substring(0, 40).concat('...') : props.description ? props.description : '';
 
 	const handleClick = (e: React.SyntheticEvent): void => {
 		e.preventDefault();
@@ -18,28 +17,16 @@ const ImageComponent: React.FunctionComponent<ImageData> = (props: ImageData): R
 
 		// TODO implementation (open a dialog modal)
 	}
-	/*
-	const handleHover = (e: React.SyntheticEvent): void => {
-		e.preventDefault();
-		setIsHovered(!isHovered);
-		console.log(description);
-	}
-	 */
 
 	return (
 		<figure id={props.id} className={styles.figure}
 		>
 			<figcaption className={styles.figcaption}>
-				{description}
+				{description}<br />
+				<span className={styles.credits}>
+					&#x1F4F7; by {props.user.name} on Unsplash
+				</span>
 			</figcaption>
-			{/*
-			{isHovered && props.description && (
-			<figcaption className={styles.figcaption}>
-				{description}
-			</figcaption>	
-			)}
-			*/}
-
 			<Image
 				className={styles.img}
 				src={props.urls.small}
