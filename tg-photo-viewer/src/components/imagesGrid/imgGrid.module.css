@@ -1,11 +1,8 @@
 .imggrid {
 	column-count: 4;
-	column-gap: 1%;
+	column-gap: 10px;
 	width: 1100px;
-	column-width: 250px;
-	margin: 0 auto;
-	padding: 10px;
-	margin-top: 5%;
+	margin-top: 50px;
 }
 .imggrid:hover > .imgcontainer:not(:hover) {
 	filter: blur(3px) grayscale(100%);

@@ -1,3 +1,9 @@
+/*
+ * The helpers.ts module exports the toImageData function.
+ * Said function is used to convert response data to ImageData objects.
+ * The implementation can be extended to adapt to any other API, in which case
+ * it would be advisable to refactor it based on any given data structures that fits the API.
+*/
 export const toImageData: Function = (item: any): ImageData => {
 	return {
 		id: item['id'],

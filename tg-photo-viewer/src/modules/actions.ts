@@ -1,60 +1,36 @@
-import "server-only";
+/*
+ * The actions.ts module exports the getImages function.
+ * Said function is currently used to fetch images from Unsplash and map them to ImageData objects, but its implementation can be extended to adapt to any other API.
+*/
+'use server';
 import { RequestOptions, ImageData } from "../customTypes/types";
 import { toImageData } from "./helpers";
+import { services } from "./constants";
 
-const UNSPLASH_ENDPOINT_BASE: string = 'https://api.unsplash.com/photos/';
-const UNSPLASH_ENDPOINT_RANDOM: string = 'https://api.unsplash.com/photos/random';
-const defaultOptions: RequestOptions = {
-	headers: {
-		'Accept-Version': 'v1',
-		'Authorization': `Client-ID ${process.env.UNSPLASH_API_KEY}`,
-		'Content-Type': 'application/json',
-	},
-};
+const { unsplash } = services;
 
-const baseParams: Record<string, string | number> = {
-	'per_page': 12, // per_page param required when no query is provided
-	'count': 16, // count param required when a query is provided
-}
-
-const parseURI: Function = (
-	params: Record<string, string | number> = baseParams
-): string => {
-	const endpoint: URL = params.query ? new URL(UNSPLASH_ENDPOINT_RANDOM) : new URL(UNSPLASH_ENDPOINT_BASE);
-
-	for (const [key, value] of Object.entries(params)) {
-		endpoint.searchParams.append(key, value.toString());
-	};
-
-	return endpoint.href;
-}
-
-const fetchImages: Function = (async(
-	params: Record<string, string | number> = baseParams,
-	options: RequestOptions = defaultOptions,
-): Promise<ImageData[]>  => {
+const getImages: Function = async(
+	endpoint: string = unsplash.endpoints.random,
+	page: number = 1,
+	params: Record<string, string | number> = unsplash.base_params
+): Promise<ImageData[]> => {
 	try {
-		let uri: string = parseURI(params);
-
-		const response: Response = await fetch(uri, options);
-		if (response.ok){
-			let data: ImageData[] = await response.json();
-			data = data.map((item: any) => toImageData(item));
-			return data;
+		const url: URL = new URL(endpoint);
+		for (const [key, value] of Object.entries(params)) {
+			url.searchParams.append(key, value.toString());
+		}
+		url.searchParams.append('page', page.toString());
+		const response: Response = await fetch(url.href, unsplash.base_options);
+		if (response.ok) {
+			const data = await response.json();
+			return data.map((item: any) => toImageData(item));
 		} else {
-			return Promise.reject(response);
+			return Promise.reject(`Error: ${response.status}: ${response.statusText}`);
 		}
 	} catch(err) {
 		return Promise.reject(err);
 	}
-});
+}
 
-const fetchData: Function = async(
-	params: Record<string, string | number> = baseParams
-): Promise<ImageData[]> => {
-	const data: ImageData[] = await fetchImages(params);
-	return data;
-};
-
-export { fetchData, toImageData };
+export { getImages };
 
