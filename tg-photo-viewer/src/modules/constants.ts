@@ -6,7 +6,7 @@
 export const services = {
 	unsplash: {
 		endpoints: {
-			base: 'https://api.unsplash.com/photos/',
+			base: 'https://api.unsplash.com/photos',
 			random: 'https://api.unsplash.com/photos/random',
 		},
 		base_options: {
@@ -17,8 +17,8 @@ export const services = {
 			},
 		},
 		base_params: {
-			per_page: 12, // per_page param required when no query is provided
-			count: 16, // count param required when a query is provided
+			count: 6, 
+			query: '',
 		},
 	},
 };
